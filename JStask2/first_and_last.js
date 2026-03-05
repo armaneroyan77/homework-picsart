@@ -1,5 +1,9 @@
 function  firstAndLast(arr){
 
+    if(!arr.length){
+        return [];
+    }
+
     let temp_arr = [];
     temp_arr.push(arr[0]);
     temp_arr.push(arr[arr.length - 1]);

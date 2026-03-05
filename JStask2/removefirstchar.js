@@ -1,7 +1,7 @@
 function removeFirstChar(str){
 
     if(str.length <= 1){
-        return "\"\""
+        return ""
     }
 
     return str.slice(1);

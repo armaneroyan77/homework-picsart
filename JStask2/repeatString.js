@@ -1,10 +1,10 @@
 function repeatString(str, n){
 
-    if(n < 1){
-        return "\"\"";
+    if(str.length < 1 ){
+        return "";
     }
 
-    if(n === 1){
+    if(n <= 1){
         return str;
     }
 

@@ -1,5 +1,8 @@
 function isEven(val){    
-    return !(val & 1)
+    if(val % 2){
+        return flase;
+    }
+    return true;
 }
 
 console.log(isEven(2));

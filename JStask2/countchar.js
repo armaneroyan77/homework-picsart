@@ -1,7 +1,7 @@
 function countChar(str, char, index){
 
     if(index < 0){
-        return 0;
+        return 1;
     }
 
     if(str[index] !== char){
@@ -9,7 +9,6 @@ function countChar(str, char, index){
     }
 
     return 1 + countChar(str, char, index - 1);
-
 }
 
 let str = "lhelllosdl";
