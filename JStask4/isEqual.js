@@ -1,21 +1,40 @@
-let obj1 = {a: 12, b: 32};
-let obj2 = {a:12, b: 32};
+// let obj1 = {a: 12, b: {c:12, d:34}};
+// let obj2 = {a:12, b: {c:12, d:34}};
 
-let isEqual = (obj1, obj2)=>{
+// let isEqual = (obj1, obj2) => {
+    
+    //     if(Object.keys(obj1).length !== Object.keys(obj2).length) return false;
+    
+    //     for(let element in obj1){
+        
+    //         if(typeof obj1[element] !== "object" || obj1[element] === null){
+        //             if(obj1[element] !== obj2[element]){
+            //                 return false;
+            //             }
+            //         }
+//         else{
+//             if(!isEqual(obj1[element], obj2[element])){
+//                 return false;
+//             }
+//         }
 
-    const obj1Length = Object.keys(obj1).length;
-    const obj2Length = Object.keys(obj2).length;
+//     }
+//     return true;
+// }
 
-    if(obj1Length !== obj2Length) return false;
+// console.log(isEqual(obj1, obj2));
 
-    for(let key in obj2){
-        if(!(key in obj2) || (obj1[key] !== obj2[key])){
-            return false;
-        }
-    }
-    return true;
+
+let obj1 = {a: 12, b: {c:12, d:34}};
+let obj2 = {a:12, b: {c:12, d:33}};
+
+function isEqual(obj1,obj2){
+
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
 }
 
 
-console.log(isEqual(obj1, obj2));
+let result = isEqual(obj1,obj2);
+console.log(result);
+
 
