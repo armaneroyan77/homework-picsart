@@ -1,7 +1,7 @@
 function countChar(str, char, index){
 
     if(index < 0){
-        return 1;
+        return 0;
     }
 
     if(str[index] !== char){
@@ -11,5 +11,5 @@ function countChar(str, char, index){
     return 1 + countChar(str, char, index - 1);
 }
 
-let str = "lhelllosdl";
-console.log(countChar(str, "l", str.length - 1));
+let str = "lfhelllosffdlf";
+console.log(countChar(str, "f", str.length - 1));
