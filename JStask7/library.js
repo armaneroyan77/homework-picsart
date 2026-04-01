@@ -84,21 +84,17 @@ class Library{
 
     addBook(book){
 
-         if(!book.title || typeof book.title !== "string"){
+         if(!book.title){
             throw new Error("the book must have a title:");
         }
 
-        if(!book.author || typeof book.title !== "string"){
+        if(!book.author){
             throw new Error("the book must have a author name:");
         }
 
         if(typeof book.year !== "number" || (book.year < 1450 || book.year > getCurrentYear())){
             throw new Error("year of publication must be number, and in range(1450 - currentYear):");
         }
-
-        // if(!book.isAvailable){
-        //     throw new Error("the book is not available");
-        // }
 
         this.books.push(book);
 
