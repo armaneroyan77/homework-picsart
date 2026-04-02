@@ -25,7 +25,7 @@ class Book{
     get title(){
 
         if(!this.#title){
-            throw new Error("title is not defined!");
+            return "title is not defined!";
         }
 
         return this.#title;
@@ -36,7 +36,7 @@ class Book{
     set title(value){
 
         if(!value){
-            throw new Error("invalid value, value is Empty!");
+            return "invalid value, value is Empty!";
         }
 
         this.#title = value;
@@ -46,7 +46,7 @@ class Book{
     get author(){
 
         if(!this.#author){
-            throw new Error("author is not defined!");
+            return "author is not defined!";
         }
 
         return this.#author;
@@ -55,7 +55,7 @@ class Book{
     set author(value){
 
         if(!value){
-            throw new Error("invalid value, value is Empty!");
+            return "invalid value, value is Empty!";
         }
 
         this.#author = value;
@@ -70,7 +70,7 @@ class Book{
     set year(value){
         
         if(value < 1450 || value > getCurrentYear()){
-            throw new Error("invalid value for set year!");
+            return "invalid value for set year!";
         }
 
         this.#year = value;
@@ -116,15 +116,15 @@ class Book{
     getInfo(){
 
         if(!this.#title){
-            throw new Error("the book must have a title:");
+            return ("the book must have a title:");
         }
 
         if(!this.#author){
-            throw new Error("the book must have a author name:");
+            return ("the book must have a author name:");
         }
 
         if(typeof this.#year !== "number" || (this.#year < 1450 || this.#year > getCurrentYear())){
-            throw new Error("year of publication must be number, and in range(1450 - currentYear):");
+            return ("year of publication must be number, and in range(1450 - currentYear):");
         }
 
         return `book title: ${this.#title}\nauthor: ${this.#author}\nyear of publication: ${this.#year}\n`;
@@ -143,7 +143,7 @@ class Reader{
     get name(){
 
         if(!this.#name){
-            throw new Error("name is not defined!");
+            return ("name is not defined!");
         }
 
         return this.#name;
@@ -152,7 +152,7 @@ class Reader{
     set name(value){
 
         if(!value && isDigigtInStr(value)){
-            throw new Error("invalid value!");
+            return ("invalid value!");
         } 
 
         this.#name = value;
@@ -160,7 +160,7 @@ class Reader{
 
     get borrowedBooks(){
         if(this.#borrowedBooks.length === 0){
-            throw new Error("there are nor borrowed book!");
+            return ("there are nor borrowed book!");
         }
 
         return this.#borrowedBooks;
@@ -230,7 +230,7 @@ class Library{
     get name(){
 
         if(!this.#name){
-            throw new Error("name is not defined!");
+            return ("name is not defined!");
         }
 
         return this.#name;
@@ -239,7 +239,7 @@ class Library{
     set name(value){
 
         if(!value && isDigigtInStr(value)){
-            throw new Error("invalid value!");
+            return ("invalid value!");
         } 
 
         this.#name = value;
@@ -248,7 +248,7 @@ class Library{
     get books(){
 
         if(this.#Book.length === 0){
-            throw new Error(`there are not this book in ${this.#name} library`);
+            return (`there are not this book in ${this.#name} library`);
         }
 
         return this.#Book;
@@ -257,7 +257,7 @@ class Library{
     get readers(){
 
         if(this.#Reader.length === 0){
-            throw new Error(`there are not readers in ${this.#name} library`);
+            return (`there are not readers in ${this.#name} library`);
         }
 
         return this.#Reader;
@@ -266,15 +266,15 @@ class Library{
     addBook(book){
 
          if(!book.title){
-            throw new Error("the book must have a title:");
+            return ("the book must have a title:");
         }
 
         if(!book.author){
-            throw new Error("the book must have a author name:");
+            return ("the book must have a author name:");
         }
 
         if(typeof book.year !== "number" || (book.year < 1450 || book.year > getCurrentYear())){
-            throw new Error("year of publication must be number, and in range(1450 - currentYear):");
+            return ("year of publication must be number, and in range(1450 - currentYear):");
         }
 
         this.#Book.push(book);
