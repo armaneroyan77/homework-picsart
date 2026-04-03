@@ -1,6 +1,3 @@
-function getCurrentYear() {
-  return new Date().getFullYear();
-}
 
 function isDigigtInStr(str){
    return str.split('').some(char => char >= '0' && char <= '9');
@@ -15,10 +12,11 @@ class Book{
     #isAvailable;
 
     constructor(title, author, year){
-        this.#title = title;
-        this.#author = author;
-        this.#year = year;
-        this.#isAvailable = true;
+
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.isAvailable = true;
 
     }
 
@@ -95,7 +93,7 @@ class Book{
     returnBook(){
 
         if(!this.#isAvailable){
-            this.#isAvailable = false;
+            this.#isAvailable = true;
         }
 
         else{
@@ -123,7 +121,7 @@ class Book{
             return ("the book must have a author name:");
         }
 
-        if(typeof this.#year !== "number" || (this.#year < 1450 || this.#year > getCurrentYear())){
+        if(typeof this.#year !== "number"){
             return ("year of publication must be number, and in range(1450 - currentYear):");
         }
 
@@ -133,11 +131,13 @@ class Book{
 }
 
 class Reader{
+
     #name;
     #borrowedBooks;
+
     constructor(name){
-        this.#name = name;
-        this.#borrowedBooks = [];
+        this.name = name;
+        this.borrowedBooks = [];
     }
 
     get name(){
@@ -159,9 +159,6 @@ class Reader{
     }
 
     get borrowedBooks(){
-        if(this.#borrowedBooks.length === 0){
-            return ("there are nor borrowed book!");
-        }
 
         return this.#borrowedBooks;
     }
@@ -224,7 +221,7 @@ class Library{
     #Reader = [];
 
     constructor(name){
-        this.#name = name;
+        this.name = name;
     }
 
     get name(){
@@ -247,18 +244,10 @@ class Library{
 
     get books(){
 
-        if(this.#Book.length === 0){
-            return (`there are not this book in ${this.#name} library`);
-        }
-
         return this.#Book;
     }
 
     get readers(){
-
-        if(this.#Reader.length === 0){
-            return (`there are not readers in ${this.#name} library`);
-        }
 
         return this.#Reader;
     }
@@ -273,7 +262,7 @@ class Library{
             return ("the book must have a author name:");
         }
 
-        if(typeof book.year !== "number" || (book.year < 1450 || book.year > getCurrentYear())){
+        if(typeof book.year !== "number"){
             return ("year of publication must be number, and in range(1450 - currentYear):");
         }
 
@@ -287,7 +276,6 @@ class Library{
 
     findBookByTitle(title){
         
-
         const theBook = this.#Book.find(e => e.title === title);
         
         if(theBook){
@@ -332,12 +320,9 @@ class Library{
 
     showAllBooks(){
 
-        if(this.#Book.length === 0){
-            return "there are not book in library: ";
+        if(this.books.length !== 0){
+            return this.books.map(e => e.getInfo());
         }
-
-        this.#Book.forEach(e => console.log(e.getInfo()));
-        return "";
     }
 
     getLibraryInfo(){

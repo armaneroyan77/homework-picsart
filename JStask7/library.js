@@ -1,8 +1,3 @@
-function getCurrentYear() {
-  return new Date().getFullYear();
-}
-
-
 class Book{
 
     constructor(title, author, year){
@@ -22,7 +17,7 @@ class Book{
             throw new Error("the book must have a author name:");
         }
 
-        if(typeof this.year !== "number" || (this.year < 1450 || this.year > getCurrentYear())){
+        if(typeof this.year !== "number"){
             throw new Error("year of publication must be number, and in range(1450 - currentYear):");
         }
 
@@ -57,7 +52,7 @@ class Book{
             throw new Error("parametr authorName must be string type: ");
         }
 
-        if(toLowerCase(authorName) === toLowerCase(this.author)){
+        if(authorName.toLowerCase() === this.author.toLowerCase()){
             return true;
         }
         
@@ -92,7 +87,7 @@ class Library{
             throw new Error("the book must have a author name:");
         }
 
-        if(typeof book.year !== "number" || (book.year < 1450 || book.year > getCurrentYear())){
+        if(typeof book.year !== "number"){
             throw new Error("year of publication must be number, and in range(1450 - currentYear):");
         }
 
@@ -131,7 +126,7 @@ class Library{
     }
 
     findBooksByAuthor(authorName){
-        return this.books.filter(e => e.author === authorName);
+        return this.books.filter(e => e.matchesAuthor(authorName));
     }
 
     getAvailableBooks(){
@@ -164,34 +159,34 @@ class Library{
     }
 
     showAllBooks(){
-        if(this.books.length === 0){
-            return "there are not book in library: ";
-        }
 
-        this.books.forEach(e => console.log(e.getInfo()));
+        if(this.books.length !== 0){
+            return this.books.map(e => e.getInfo());
+        }
 
     }
 
-    countBooks(){
+    countBooks(){ this.books.forEach(e => console.log(e.getInfo()));
 
         let count = 0;
         this.books.forEach(() => ++count);
-        return `\nthe count of books ${count}\n`;
+        return count;
 
     }
 
     countAvailableBooks(){
 
         let countAvailableBooks = this.getAvailableBooks().length;
-        return `\nthe count of available books ${countAvailableBooks}\n`;
+        return countAvailableBooks;
     }
 
     searchBooks(word){
-        return this.books.filter(e => e.title.includes(word));
+        return this.books.filter(e => e.matchesTitle(word));
     }
 
     getOldestBook(){
-        return (this.books === 0)? null: this.books.pop();
+        const oldBookIsYear = Math.min(...this.books.map(e => e.year)); 
+        return (this.books.length === 0)? null: this.books.find(e => e.year === oldBookIsYear);
     }
 
 }
