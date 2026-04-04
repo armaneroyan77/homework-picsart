@@ -16,7 +16,7 @@ class Book{
         this.title = title;
         this.author = author;
         this.year = year;
-        this.isAvailable = true;
+        this.#isAvailable = true;
 
     }
 
@@ -67,7 +67,7 @@ class Book{
 
     set year(value){
         
-        if(value < 1450 || value > getCurrentYear()){
+        if(value < 1450){
             return "invalid value for set year!";
         }
 
@@ -133,11 +133,10 @@ class Book{
 class Reader{
 
     #name;
-    #borrowedBooks;
+    #borrowedBooks = [];
 
     constructor(name){
         this.name = name;
-        this.borrowedBooks = [];
     }
 
     get name(){
