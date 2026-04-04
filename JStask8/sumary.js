@@ -159,9 +159,9 @@
 
 //     constructor(usName = "", nicName = "", passwd = ""){
 
-//         this._userFullName = usName;
-//         this._nicName = nicName;
-//         this._password = passwd; 
+//         this.userFullName = usName;
+//         this.nicName = nicName;
+//         this.password = passwd; 
            
 //     }
 
@@ -243,7 +243,7 @@ Getter returns current balance. Prevent negative deposits */
 // class BankAccount{
 
 //     constructor(){
-//         this._balance = 0;
+//         this.balance = 0;
 //     }
 
 //     set balance(value){
@@ -282,7 +282,7 @@ Getter returns current balance. Prevent negative deposits */
 
 // class Car{
 //     constructor(speed = 0){
-//         this._speed = speed;
+//         this.speed = speed;
 //     }
 
 //     set speed(value){
@@ -311,7 +311,7 @@ Getter returns current balance. Prevent negative deposits */
 // class Card{
 
 //     constructor(total = 0){
-//         this._total = total;
+//         this.total = total;
 //     }
 
 //     set total(value){
@@ -345,7 +345,7 @@ Getter returns current count  */
 
 //     constructor(){
 
-//         this._count = 0;
+//         this.count = 0;
 
 //     }
 
@@ -404,7 +404,7 @@ Getter returns current count  */
 // class Email{
 
 //     constructor(emailAddres = ""){
-//         this._email = emailAddres;
+//         this.email = emailAddres;
 //     }
 
 //     set email(mail){
@@ -502,7 +502,7 @@ lastName. Create a getter fullName that returns "First Last" */
 // class Product{
 
 //     constructor(price = 0){
-//         this._price = price;
+//         this.price = price;
 //     }
 
 //     set price(value){
@@ -549,8 +549,8 @@ lastName. Create a getter fullName that returns "First Last" */
 
 //     constructor(width = 0, height = 0){
 
-//         this._width = width;
-//         this._height = height;
+//         this.width = width;
+//         this.height = height;
 //     }
 
 //     set width(value){
@@ -590,7 +590,7 @@ lastName. Create a getter fullName that returns "First Last" */
 
 //     constructor(celsius_ = 0){
 
-//         this._celsius = celsius_;
+//         this.celsius = celsius_;
 
 //     }
 
@@ -610,3 +610,6 @@ lastName. Create a getter fullName that returns "First Last" */
 // t1.celsius = 23.8;
 // console.log(t1.celsius);
  
+function foo(){}
+
+console.log();
