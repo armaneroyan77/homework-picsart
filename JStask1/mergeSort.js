@@ -1,22 +1,43 @@
-function devide(lst, middle){
-
+function MergeSort(left, right){
     
-    let left = lst.slice(0, middle);
-    let right = lst.slice(middle);
+    let a = [];
+    let l = 0, r = 0;
 
-    devide(left, Math.trunc(left.size / 2));
-    devide(right, Math.trunc(right.size / 2));
+    while(l < left.length && r < right.length){
 
+        if(left[l] < right[r]){
+            a.push(left[l]);
+            l++;
+        }
 
-    if(left.lenght == 1){
-        return left;
+        else{
+            a.push(right[r]);
+            r++;
+        }
     }
 
-    if(right.lenght == 1){
-        return right;
+    while(l < left.length){
+        a.push(left[l]);
+        l++;
     }
 
-    return devide(left);
-    return devide(right);
+    while(r < right.length){
+        a.push(right[r]);
+        r++;
+    }
+
+    return a;
+}
+
+
+function merge(arr){
     
+    if(arr.length === 1) return arr;
+
+    let middle = Math.floor(arr.length / 2);
+
+    let left = merge(arr.slice(0, middle));
+    let right = merge(arr.slice(middle));
+
+    return MergeSort(left, right);
 }
