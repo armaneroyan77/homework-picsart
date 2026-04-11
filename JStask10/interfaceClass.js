@@ -1,5 +1,4 @@
 class StorageProvider{
-
     upload(file){
         throw new Error("this is interface method!");
     }
@@ -7,12 +6,9 @@ class StorageProvider{
     download(filename){
          throw new Error("this is interface method!");
     }
-
-
 }
 
 class LocalStorageProvider extends StorageProvider{
-
     upload(file){
         console.log(`${file} is uploaded:`);
     }
@@ -25,7 +21,6 @@ class LocalStorageProvider extends StorageProvider{
 
 
 class CloudStorageProvider extends StorageProvider{
-    
     upload(file){
         console.log(`${file} is uploaded:`);
     }
@@ -38,11 +33,9 @@ class CloudStorageProvider extends StorageProvider{
 
 
 function useStorage(provider){
-
     if(typeof provider.upload !== "function" || typeof provider.download !== "function"){
         throw new Error("Error: Invalid storage provider");    
     } 
-    
 }
 
 
