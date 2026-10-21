@@ -54,17 +54,3 @@ class Stack {
         }
     }
 }
-
-
-
-const stack = new Stack;
-
-stack.push(12);
-stack.push(2334);
-stack.push(34);
-
-console.log(stack.size);
-
-
-
-for(let val of stack) console.log(val);
