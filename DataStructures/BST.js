@@ -1,3 +1,6 @@
+import Queue from "./queue.js";
+import Stack from "./Stack.js";
+
 class TreeNode {
     left = null;
     ight = null;
@@ -5,7 +8,6 @@ class TreeNode {
         this.data = data;
     }  
 }
-
 
 class BST {
 
@@ -53,10 +55,10 @@ class BST {
         this.#_preOrder(node.right, result);
     }
 
-    _postOrder(node, result) {
+    #_postOrder(node, result) {
         if(!node) return;
-        this.#_inorder(node.left, result);
-        this.#_inorder(node.right, result);
+        this.#_postOrder(node.left, result);
+        this.#_postOrder(node.right, result);
         result.push(node.data);
 
     }
@@ -112,18 +114,94 @@ class BST {
     }
 
     preOrderRecursive() {
-    const result = [];
-
+        const result = [];
+        
         this.#_preOrder(this.#root, result);
         return result;
     }
-
+    
+    
     postOrderRecursive() {
         const result = [];
-        this._postOrder(this.#root, result);
+        this.#_postOrder(this.#root, result);
         return result;
     }
+    
+    levelOrder(){
+        if(!this.#root) throw new Error("Error");
+        
+        const queue = new Queue;
+        queue.enqueue(this.#root);
+        const res = [];
+        while(!queue.isEmpty()){
+            const node = queue.dequeue();
+            let left = node.left;
+            let right = node.right;
+            if(left) queue.enqueue(left);
+            if(right)queue.enqueue(right);
+            res.push(node.data);
+        }
+        return res;
+    }
 
+    inOrderIterative(){
+        const res = [];
+        const stack = new Stack();
+        let current = this.#root;
+        let left = null;
+        let right = null;
+
+        while(current || !stack.isEmpty()){
+            while(current){
+                stack.push(current);
+                current = current.left;
+            }
+
+            current = stack.pop();
+            res.push(current.data);
+            current = current.right;
+        }
+
+        return res;
+    }
+
+    postOrderIterative(){
+        const res = [];
+        const stack1 = new Stack;
+        stack1.push(this.#root);
+        const stack2 = new Stack;
+
+        while(stack1.size){
+            let current = stack1.pop();
+            stack2.push(current);
+            if(current.left) stack1.push(current.left);
+            if(current.right) stack1.push(current.right);
+        }
+
+        while(stack2.size){
+            res.push(stack2.pop().data);
+        }
+        return res;
+    }
+
+    preOrderIterative(){
+        const stack = new Stack;
+        const res = [];
+        let current = this.#root;
+
+        while(current){
+
+            while(current){
+                res.push(current.data);
+                if(current.right) stack.push(current.right);
+                current = current.left;
+            }
+
+            if(!stack.isEmpty()) current = stack.pop();
+        }
+        return res;
+    }
+    
     removeRecursive(value) {
         this.#root = this.#_remove(this.#root, value);
     }
@@ -182,20 +260,15 @@ class BST {
 const bst = new BST;
 
 bst.insert(12);
-bst.insert(2);
-bst.insert(4);
-bst.insert(45);
-bst.insert(32);
+bst.insert(3);
+bst.insert(14);
+bst.insert(90);
+bst.insert(13)
+bst.insert(46);
+bst.insert(9);
+bst.insert(1);
 
-
-
-console.log(bst.inOrderRecursive());
-bst.removeRecursive(32);
-console.log(bst.inOrderRecursive());
-
-console.log(bst.contains(45));
-
-
-
-
-
+// console.log(bst.postOrderRecursive());
+// console.log(bst.postOrderIterative());
+console.log(bst.preOrderIterative());
+console.log(bst.preOrderRecursive());

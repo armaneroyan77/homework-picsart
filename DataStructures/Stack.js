@@ -1,4 +1,4 @@
-class Stack {
+export default class Stack {
     #capacity;
     #size;
     #buffer;

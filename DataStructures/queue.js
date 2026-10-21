@@ -1,4 +1,4 @@
-class Queue {
+export default class Queue {
     #capacity;  
     #size;
     #front;
@@ -10,7 +10,7 @@ class Queue {
         this.#capacity = capacity;
         this.#rear = 0;
         this.#size = 0;
-        this.#buffer = new Int32Array(this.#capacity);
+        this.#buffer = new Array(this.#capacity);
     }
 
     enqueue(elem) {
@@ -75,24 +75,4 @@ class Queue {
             }
         }
     }
-}
-
-
-const queue = new Queue;
-
-queue.enqueue(54);
-queue.enqueue(12);
-queue.enqueue(2);
-queue.enqueue(34);
-
-
-
-queue.dequeue();
-queue.enqueue(22);
-
-// queue.print();
-
-
-for(let val of queue){
-    console.log(val);
 }
