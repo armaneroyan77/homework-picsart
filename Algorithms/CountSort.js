@@ -1,15 +1,13 @@
 function CountSort(array){
-    if(array.length <= 1 || !array) return [...array];
+    if(!array || array.length <= 1) return array? [...array]: [];
 
     let max = Math.max(...array);
     let min = Math.min(...array);
-    k = max - min + 1;
+    const k = max - min + 1;
     const bias = -min;
-
     const count = new Array(k).fill(0);    
     const output = new Array(array.length);
-    
-    
+
     for(let i = 0; i < array.length; ++i){
         count[array[i] + bias]++;
     }
@@ -32,6 +30,6 @@ function CountSort(array){
     
 }
 
-const A = null;
+const A = [22, 4, 3, 4, 1, 0];
 console.log(CountSort(A));
 
