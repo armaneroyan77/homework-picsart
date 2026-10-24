@@ -79,13 +79,13 @@ class BST {
             if(!node.left && !node.right) return null;
 
             if(!node.left || !node.right){
-                return (node.left)? node.left: node.right;
+                return node.left || node.right;
             }
 
             let successor = this.getMin(node.right);
             node.data = successor.data;
             
-            this.#_remove(node.right, successor.data);
+            node.right = this.#_remove(node.right, successor.data);
         }
 
         return node;
@@ -190,7 +190,6 @@ class BST {
         let current = this.#root;
 
         while(current){
-
             while(current){
                 res.push(current.data);
                 if(current.right) stack.push(current.right);
