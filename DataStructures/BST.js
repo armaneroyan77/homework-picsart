@@ -148,8 +148,6 @@ class BST {
         const res = [];
         const stack = new Stack();
         let current = this.#root;
-        let left = null;
-        let right = null;
 
         while(current || !stack.isEmpty()){
             while(current){
@@ -258,16 +256,15 @@ class BST {
 
 const bst = new BST;
 
+bst.insert(18);
 bst.insert(12);
-bst.insert(3);
-bst.insert(14);
-bst.insert(90);
-bst.insert(13)
-bst.insert(46);
-bst.insert(9);
-bst.insert(1);
+bst.insert(20);
+bst.insert(7);
+bst.insert(14)
+bst.insert(19);
+bst.insert(24);
 
 // console.log(bst.postOrderRecursive());
 // console.log(bst.postOrderIterative());
 console.log(bst.preOrderIterative());
-console.log(bst.preOrderRecursive());
+// console.log(bst.preOrderRecursive());

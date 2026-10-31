@@ -66,7 +66,7 @@ class AVL {
             if(node.right.balance > 0){
                 node.right = this.RotateRight(this.right);
             }
-            return this.RotateLeft(node);
+            return node.RotateLeft(node);
         }
         return node;
     }
